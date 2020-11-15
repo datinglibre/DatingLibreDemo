@@ -1,6 +1,6 @@
 # DatingLibreDemo
 
-![Build Status](https://github.com/datinglibre/datinglibredemo/actions/workflows/datinglibre.yml/badge.svg)
+![Build Status](https://github.com/datinglibre/datinglibredemo/actions/workflows/datinglibre.yml/badge.svg?branch=alternative)
 
 The code used to power [DatingLibre.com](https://datinglibre.com).
 

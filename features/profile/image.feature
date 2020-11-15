@@ -6,8 +6,8 @@ Feature:
     @javascript
     Scenario: I want to add a profile image to my profile
         Given the following profiles exist:
-            | email               | city   | age | requirements | attributes |
-            | newuser@example.com | London | 30  | woman        | man        |
+            | email               | city   | age | requirements  | attributes  |
+            | newuser@example.com | London | 30  | woman, switch | man, switch |
         Given I am logged in with "newuser@example.com"
         When I am on the profile image page
         And I attach the file "cat.jpg" to "inputImageButton"
@@ -39,18 +39,18 @@ Feature:
     @image
     Scenario: I can't see another user's un-moderated profile image on their profile
         Given the following profiles exist:
-            | email                    | attributes | requirements | city    | age |
-            | bristol_blue@example.com | woman      | man          | Bristol | 30  |
-            | bath_yellow@example.com  | man        | woman        | Bath    | 30  |
+            | email                    | attributes      | requirements    | city    | age |
+            | bristol_blue@example.com | woman, switch   | man, submissive | Bristol | 30  |
+            | bath_yellow@example.com  | man, submissive | woman, switch   | Bath    | 30  |
         When the user "bristol_blue@example.com" has uploaded a profile image
         Then the user "bath_yellow@example.com" should not be able to see the profile image of "bristol_blue@example.com"
 
     @image
     Scenario: I can see another user's profile image when it has been accepted
         Given the following profiles exist:
-            | email                    | attributes | requirements | city    | age |
-            | bristol_blue@example.com | woman      | man          | Bristol | 30  |
-            | bath_yellow@example.com  | man        | woman        | Bath    | 30  |
+            | email                    | attributes      | requirements    | city    | age |
+            | bristol_blue@example.com | woman, switch   | man, submissive | Bristol | 30  |
+            | bath_yellow@example.com  | man, submissive | woman, switch   | Bath    | 30  |
         And the user "bristol_blue@example.com" has uploaded a profile image
         And the profile image for "bristol_blue@example.com" has passed moderation
         Then the user "bath_yellow@example.com" should be able to see the profile image of "bristol_blue@example.com"
@@ -58,8 +58,8 @@ Feature:
     @image
     Scenario: I should see my profile image failed moderation
         Given the following profiles exist:
-            | email               | city   | age | requirements | attributes |
-            | newuser@example.com | London | 30  | woman        | man        |
+            | email               | city   | age | requirements  | attributes  |
+            | newuser@example.com | London | 30  | woman, switch | man, switch |
         And the user "newuser@example.com" has uploaded a profile image
         And the profile image for "newuser@example.com" has failed moderation
         And I am logged in with "newuser@example.com"

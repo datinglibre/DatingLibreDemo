@@ -9,11 +9,10 @@ use App\Form\FilterFormType;
 use DatingLibre\AppBundle\Entity\Filter;
 use DatingLibre\AppBundle\Entity\User;
 use DatingLibre\AppBundle\Repository\FilterRepository;
-use DatingLibre\AppBundle\Repository\InterestRepository;
 use DatingLibre\AppBundle\Repository\UserRepository;
 use DatingLibre\AppBundle\Service\ProfileService;
+use DatingLibre\AppBundle\Service\RequirementService;
 use DatingLibre\AppBundle\Service\SuspensionService;
-use DatingLibre\AppBundle\Service\UserInterestFilterService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -28,23 +27,20 @@ class UserSearchIndexController extends AbstractController
     private UserRepository $userRepository;
     private FilterRepository $filterRepository;
     private SuspensionService $suspensionService;
-    private InterestRepository $interestRepository;
-    private UserInterestFilterService $userInterestFilterService;
+    private RequirementService $requirementService;
 
     public function __construct(
         ProfileService $profileService,
         UserRepository $userRepository,
         FilterRepository $filterRepository,
-        InterestRepository $interestRepository,
-        UserInterestFilterService $userInterestFilterService,
-        SuspensionService $suspensionService
+        SuspensionService $suspensionService,
+        RequirementService $requirementService
     ) {
         $this->profileService = $profileService;
         $this->userRepository = $userRepository;
         $this->filterRepository = $filterRepository;
         $this->suspensionService = $suspensionService;
-        $this->userInterestFilterService = $userInterestFilterService;
-        $this->interestRepository = $interestRepository;
+        $this->requirementService = $requirementService;
     }
 
     public function index(UserInterface $user, Request $request)
@@ -62,22 +58,20 @@ class UserSearchIndexController extends AbstractController
         $profile = $this->profileService->find($user->getId());
         $filter = $this->filterRepository->find($user->getId()) ?? $this->createDefaultFilter($user);
 
-        $userInterestFilters = $this->userInterestFilterService->findByUser($user);
 
         $filterForm = new FilterForm();
         $filterForm->setDistance($filter->getDistance());
         $filterForm->setMaxAge($filter->getMaxAge());
         $filterForm->setMinAge($filter->getMinAge());
         $filterForm->setRegion($filter->getRegion());
-        $filterForm->setInterests($userInterestFilters);
-
+        $filterForm->setRelationships($this->requirementService->getMultipleByUserAndCategory($user->getId(), 'relationship'));
+        $filterForm->setSexes($this->requirementService->getMultipleByUserAndCategory($user->getId(), 'sex'));
 
         $filterFormType = $this->createForm(
             FilterFormType::class,
             $filterForm,
             [
                 'regions' => $profile->getCity()->getRegion()->getCountry()->getRegions(),
-                'interests' => $this->interestRepository->findAll()
             ]
         );
 
@@ -89,8 +83,20 @@ class UserSearchIndexController extends AbstractController
             $filter->setMinAge($filterForm->getMinAge());
             $filter->setMaxAge($filterForm->getMaxAge());
             $filter->setDistance($filterForm->getDistance());
-            $this->userInterestFilterService->createUserInterestFiltersByInterests($user, $filterForm->getInterests());
             $this->filterRepository->save($filter);
+
+            $this->requirementService->createRequirementsInCategory(
+                $user,
+                'sex',
+                $filterForm->getSexes()
+            );
+
+            $this->requirementService->createRequirementsInCategory(
+                $user,
+                'relationship',
+                $filterForm->getRelationships()
+            );
+
             return new RedirectResponse($this->generateUrl('user_search_index'));
         }
 

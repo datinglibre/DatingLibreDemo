@@ -4,9 +4,9 @@ Feature:
     @block
     Scenario: I want to block another user
         Given the following profiles exist:
-            | email                          | attributes | requirements | city   | age |
-            | chelsea_blue@example.com       | man        | woman        | London | 30  |
-            | westminster_yellow@example.com | woman      | man          | London | 30  |
+            | email                          | attributes    | requirements  | city   | age |
+            | chelsea_blue@example.com       | man, switch   | woman, switch | London | 30  |
+            | westminster_yellow@example.com | woman, switch | man, switch   | London | 30  |
         And the following blocks exist
             | email                    | block                          |
             | chelsea_blue@example.com | westminster_yellow@example.com |

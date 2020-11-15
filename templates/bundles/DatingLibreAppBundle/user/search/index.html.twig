@@ -19,13 +19,13 @@
     {% if profiles is not empty %}
         <ul class="list-unstyled">
             {% for profile in profiles %}
-                <li class="media">
-                    <img src="{% if profile.imageUrl is null %}/profile.jpg{% else %}{{ profile.imageUrl }}{% endif %}" class="mr-3" alt="" height="64" width="64">
-                    <div class="media-body">
-                        <h5 class="mt-0 mb-1"><a href="{{ path('user_profile_view', {'userId': profile.id}) }}">{{ profile.username }}</a> {{ profile_header(profile.age, profile.cityName, profile.regionName, profile.attributes) }}</h5>
-                        <p>{{ profile.about|u.truncate(100, '...') }}</p>
-                    </div>
-                </li>
+            <li class="media">
+                <img src="{% if profile.imageUrl is null %}/profile.jpg{% else %}{{ profile.imageUrl }}{% endif %}" class="mr-3" alt="" height="64" width="64">
+                <div class="media-body">
+                    <h5 class="mt-0 mb-1"><a href="{{ path('user_profile_view', {'userId': profile.id}) }}">{{ profile.username }}</a> {{ profile_header(profile.age, profile.cityName, profile.regionName, profile.attributes) }}</h5>
+                    <p>{{ profile.about|u.truncate(100, '...') }}</p>
+                </div>
+            </li>
             {% endfor %}
         </ul>
 

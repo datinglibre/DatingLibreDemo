@@ -4,9 +4,9 @@ Feature:
     @report
     Scenario: As a moderator I can view reports
         Given the following profiles exist:
-            | email                          | attributes | requirements | city   | age |
-            | chelsea_blue@example.com       | woman      | man          | London | 30  |
-            | westminster_yellow@example.com | man        | woman        | London | 30  |
+            | email                          | attributes      | requirements    | city   | age |
+            | chelsea_blue@example.com       | woman, dominant | man, submissive | London | 30  |
+            | westminster_yellow@example.com | man, submissive | woman, dominant | London | 30  |
         And a moderator exists with email "moderator@example.com"
         And the user "chelsea_blue@example.com" has reported "westminster_yellow@example.com"
         And I am logged in with "moderator@example.com"
@@ -31,9 +31,9 @@ Feature:
     @report
     Scenario: As a moderator I can view a report with messages
         Given the following profiles exist:
-            | email                          | attributes | requirements | city   | age |
-            | chelsea_blue@example.com       | woman      | man          | London | 30  |
-            | westminster_yellow@example.com | man        | woman        | London | 30  |
+            | email                          | attributes      | requirements    | city   | age |
+            | chelsea_blue@example.com       | woman, dominant | man, submissive | London | 30  |
+            | westminster_yellow@example.com | man, submissive | woman, dominant | London | 30  |
         And a moderator exists with email "moderator@example.com"
         And the user "westminster_yellow@example.com" has a subscription
         And the user "westminster_yellow@example.com" sends the message "Lorem ipsum" to "chelsea_blue@example.com"
@@ -48,9 +48,9 @@ Feature:
     @report
     Scenario: As a moderator I can view a report, when the reporter has deleted their account
         Given the following profiles exist:
-            | email                          | attributes | requirements | city   | age |
-            | chelsea_blue@example.com       | woman      | man          | London | 30  |
-            | westminster_yellow@example.com | man        | woman        | London | 30  |
+            | email                          | attributes      | requirements    | city   | age |
+            | chelsea_blue@example.com       | woman, dominant | man, submissive | London | 30  |
+            | westminster_yellow@example.com | man, submissive | woman, dominant | London | 30  |
         And a moderator exists with email "moderator@example.com"
         And the user "chelsea_blue@example.com" has reported "westminster_yellow@example.com"
         And the user "chelsea_blue@example.com" has deleted their account
@@ -66,9 +66,9 @@ Feature:
     @report
     Scenario: As a moderator I can close an open report.
         Given the following profiles exist:
-            | email                          | attributes | requirements | city   | age |
-            | chelsea_blue@example.com       | woman      | man          | London | 30  |
-            | westminster_yellow@example.com | man        | woman        | London | 30  |
+            | email                          | attributes      | requirements    | city   | age |
+            | chelsea_blue@example.com       | woman, dominant | man, submissive | London | 30  |
+            | westminster_yellow@example.com | man, submissive | woman, dominant | London | 30  |
         And a moderator exists with email "moderator@example.com"
         And the user "chelsea_blue@example.com" has reported "westminster_yellow@example.com"
         And I am logged in with "moderator@example.com"
@@ -82,9 +82,9 @@ Feature:
     @report
     Scenario: A user should be able to report the user again after the report has been closed.
         Given the following profiles exist:
-            | email                          | attributes | requirements | city   | age |
-            | chelsea_blue@example.com       | woman      | man          | London | 30  |
-            | westminster_yellow@example.com | man        | woman        | London | 30  |
+            | email                          | attributes    | requirements  | city   | age |
+            | chelsea_blue@example.com       | woman, switch | man, switch   | London | 30  |
+            | westminster_yellow@example.com | man, switch   | woman, switch | London | 30  |
         And a moderator exists with email "moderator@example.com"
         And the user "chelsea_blue@example.com" has reported "westminster_yellow@example.com"
         And I am logged in with "moderator@example.com"

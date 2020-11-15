@@ -4,8 +4,8 @@ Feature:
     @account
     Scenario: I can view my account settings
         Given the following profiles exist:
-            | email            | attributes | requirements | city   | age |
-            | user@example.com | man        | woman        | London | 30  |
+            | email            | attributes  | requirements  | city   | age |
+            | user@example.com | man, switch | woman, switch | London | 30  |
         And I am logged in with "user@example.com"
         And I go to "/account/settings"
         Then I should see "Send an email I receive a new match"

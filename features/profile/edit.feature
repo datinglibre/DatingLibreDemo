@@ -56,8 +56,8 @@ Feature:
     @profile
     Scenario: I cannot enter a duplicate username
         Given the following profiles exist:
-            | email                    | attributes | requirements | city   | age |
-            | chelsea_blue@example.com | man        | woman        | London | 30  |
+            | email                    | attributes  | requirements  | city   | age |
+            | chelsea_blue@example.com | man, switch | woman, switch | London | 30  |
         And a user with email "user@example.com"
         And I am logged in with "user@example.com"
         And I am on the profile edit page
@@ -68,8 +68,8 @@ Feature:
     @profile
     Scenario: I update my own username
         Given the following profiles exist:
-            | email                    | attributes | requirements | city   | age |
-            | chelsea_blue@example.com | man        | woman        | London | 30  |
+            | email                    | attributes  | requirements  | city   | age |
+            | chelsea_blue@example.com | man, switch | woman, switch | London | 30  |
         And I am logged in with "chelsea_blue@example.com"
         And I am on the profile edit page
         And I fill in "chelsea_blue" for "profile_form_username"
@@ -81,8 +81,8 @@ Feature:
     @profile
     Scenario: I can only enter a username with letters and numbers
         Given the following profiles exist:
-            | email                    | attributes | requirements | city   | age |
-            | chelsea_blue@example.com | man        | woman        | London | 30  |
+            | email                    | attributes  | requirements  | city   | age |
+            | chelsea_blue@example.com | man, switch | woman, switch | London | 30  |
         And a user with email "user@example.com"
         And I am logged in with "user@example.com"
         And I am on the profile edit page
@@ -100,12 +100,11 @@ Feature:
             | country        | region  | city   |
             | United Kingdom | England | London |
         And I select "man" from "profile_form_sex"
-        And I check "a woman"
+        And I select "a switch" from "profile_form_relationship"
         And I fill in "This is some text about me" for "profile_form_about"
         And I select "1990" from "profile_form_dob_year"
         And I select "1" from "profile_form_dob_month"
         And I select "1" from "profile_form_dob_day"
-        And I check "Music"
         And I close the toolbar
         And I press "Save"
         Then I should see "NewUser"
@@ -125,7 +124,7 @@ Feature:
             | country        | region  | city   |
             | United Kingdom | England | London |
         And I select "man" from "profile_form_sex"
-        And I check "a woman"
+        And I select "a switch" from "profile_form_relationship"
         And I select "1990" from "profile_form_dob_year"
         And I select "1" from "profile_form_dob_month"
         And I select "1" from "profile_form_dob_day"

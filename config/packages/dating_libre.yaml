@@ -15,10 +15,15 @@ dating_libre_app:
     # SQL to automatically add them to the database.
     categories:
     - sex
+    - relationship
     attributes:
         sex:
         - man
         - woman
+        relationship:
+        - dominant
+        - submissive
+        - switch
     interests:
         - music
         - reading

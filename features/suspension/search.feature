@@ -4,9 +4,9 @@ Feature:
     @suspension
     Scenario: A user does not see a suspended profile in search
         Given the following profiles exist:
-            | email                    | attributes | requirements | city    | age |
-            | bristol_blue@example.com | man        | woman        | Bristol | 30  |
-            | bath_yellow@example.com  | woman      | man          | Bath    | 30  |
+            | email                    | attributes       | requirements     | city    | age |
+            | bristol_blue@example.com | man, switch      | woman, switch    | Bristol | 30  |
+            | bath_yellow@example.com  | woman, switch    | man, switch      | Bath    | 30  |
         And the following filters exist:
             | email                    | distance | min_age | max_age |
             | bristol_blue@example.com | 100000   | 18      | 100     |
@@ -19,9 +19,9 @@ Feature:
     @suspension
     Scenario: A user sees a profile after their suspension has been closed
         Given the following profiles exist:
-            | email                    | attributes | requirements | city    | age |
-            | bristol_blue@example.com | man        | woman        | Bristol | 30  |
-            | bath_yellow@example.com  | woman      | man          | Bath    | 30  |
+            | email                    | attributes    | requirements  | city    | age |
+            | bristol_blue@example.com | man, switch   | woman, switch | Bristol | 30  |
+            | bath_yellow@example.com  | woman, switch | man, switch   | Bath    | 30  |
         And the following filters exist:
             | email                    | distance | min_age | max_age |
             | bristol_blue@example.com | 100000   | 18      | 100     |

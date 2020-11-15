@@ -4,9 +4,9 @@ Feature:
     @report
     Scenario: I can report another user
         Given the following profiles exist:
-            | email                          | attributes | requirements | city   | age |
-            | chelsea_blue@example.com       | woman      | man          | London | 30  |
-            | westminster_yellow@example.com | man        | woman        | London | 30  |
+            | email                          | attributes      | requirements    | city   | age |
+            | chelsea_blue@example.com       | woman, dominant | man, submissive | London | 30  |
+            | westminster_yellow@example.com | man, submissive | woman, dominant | London | 30  |
         And I am logged in with "chelsea_blue@example.com"
         And I am on "/search"
         Then I should see "westminster_yellow"
@@ -25,9 +25,9 @@ Feature:
     @report
     Scenario: I can report another user without a message
         Given the following profiles exist:
-            | email                          | attributes | requirements | city   | age |
-            | chelsea_blue@example.com       | woman      | man          | London | 30  |
-            | westminster_yellow@example.com | man        | woman        | London | 30  |
+            | email                          | attributes    | requirements  | city   | age |
+            | chelsea_blue@example.com       | woman, switch | man, switch   | London | 30  |
+            | westminster_yellow@example.com | man, switch   | woman, switch | London | 30  |
         And I am logged in with "chelsea_blue@example.com"
         And I am on "/search"
         Then I should see "westminster_yellow"
@@ -41,9 +41,9 @@ Feature:
     @report
     Scenario: I cannot report the same user twice
         Given the following profiles exist:
-            | email                          | attributes | requirements | city   | age |
-            | chelsea_blue@example.com       | woman      | man          | London | 30  |
-            | westminster_yellow@example.com | man        | woman        | London | 30  |
+            | email                          | attributes      | requirements    | city   | age |
+            | chelsea_blue@example.com       | woman, dominant | man, submissive | London | 30  |
+            | westminster_yellow@example.com | man, submissive | woman, dominant | London | 30  |
         And I am logged in with "chelsea_blue@example.com"
         And I am on "/search"
         Then I should see "westminster_yellow"

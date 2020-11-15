@@ -65,7 +65,7 @@ Feature:
     Scenario: An administrator can confirm a permanent suspension
         Given the following profiles exist:
             | email               | attributes |
-            | newuser@example.com | man        | 
+            | newuser@example.com | man        |
         And a moderator exists with email "moderator@example.com"
         And the moderator "moderator@example.com" has entered "newuser@example.com" into the permanent suspension queue
         And an administrator exists with email "admin@example.com"
@@ -89,25 +89,25 @@ Feature:
         And I am logged in with "newuser@example.com"
         Then I should see "Suspended"
 
-    @suspension
-    Scenario: An administrator can close a permanent suspension
-        Given the following profiles exist:
-            | email               |
-            | newuser@example.com |
-        And a moderator exists with email "moderator@example.com"
-        And the moderator "moderator@example.com" has entered "newuser@example.com" into the permanent suspension queue
-        And an administrator exists with email "admin@example.com"
-        And I am logged in with "admin@example.com"
-        And I follow "Moderate"
-        And I follow "Permanent suspensions"
-        And I follow "newuser"
-        And I follow "profile-menu-suspensions"
-        And I follow "Close"
-        And I press "Close"
-        Then I should see "Closed"
-        And I follow "Moderate"
-        And I follow "Permanent suspensions"
-        Then I should not see "newuser"
+   @suspension
+   Scenario: An administrator can close a permanent suspension
+       Given the following profiles exist:
+           | email               |
+           | newuser@example.com |
+       And a moderator exists with email "moderator@example.com"
+       And the moderator "moderator@example.com" has entered "newuser@example.com" into the permanent suspension queue
+       And an administrator exists with email "admin@example.com"
+       And I am logged in with "admin@example.com"
+       And I follow "Moderate"
+       And I follow "Permanent suspensions"
+       And I follow "newuser"
+       And I follow "profile-menu-suspensions"
+       And I follow "Close"
+       And I press "Close"
+       Then I should see "Closed"
+       And I follow "Moderate"
+       And I follow "Permanent suspensions"
+       Then I should not see "newuser"
 
    @suspension
    Scenario: a permanent suspension results in a cancelled subscription

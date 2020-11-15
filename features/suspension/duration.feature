@@ -24,8 +24,8 @@ Feature:
     @suspension
     Scenario: A user loses access to the site when they are suspended
         Given the following profiles exist:
-            | email               | attributes |
-            | newuser@example.com | man        |
+            | email               | attributes     |
+            | newuser@example.com | man, switch    |
         And a moderator exists with email "moderator@example.com"
         And the moderator "moderator@example.com" has suspended "newuser@example.com" for "spam" for "72" hours
         Then the user "newuser@example.com" should receive a suspension email for "Spam" for "72" hours

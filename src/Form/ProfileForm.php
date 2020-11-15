@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\Form;
 
-
 use DatingLibre\AppBundle\Entity\Attribute;
 use DatingLibre\AppBundle\Entity\City;
 use DatingLibre\AppBundle\Entity\Country;
@@ -16,8 +15,7 @@ class ProfileForm
     private $about;
     private $dob;
     private ?Attribute $sex;
-    private array $sexes;
-    private array $interests;
+    private ?Attribute $relationship;
     private ?City $city;
     private ?Region $region;
     private ?Country $country;
@@ -28,6 +26,7 @@ class ProfileForm
         $this->region = null;
         $this->country = null;
         $this->sex = null;
+        $this->relationship = null;
     }
 
     public function setUsername($username): ProfileForm
@@ -106,23 +105,13 @@ class ProfileForm
         $this->sex = $sex;
     }
 
-    public function getSexes(): array
+    public function getRelationship(): ?Attribute
     {
-        return $this->sexes;
+        return $this->relationship;
     }
 
-    public function setSexes(array $sexes): void
+    public function setRelationship(?Attribute $relationship): void
     {
-        $this->sexes = $sexes;
-    }
-
-    public function getInterests(): array
-    {
-        return $this->interests;
-    }
-
-    public function setInterests(array $interests): void
-    {
-        $this->interests = $interests;
+        $this->relationship = $relationship;
     }
 }

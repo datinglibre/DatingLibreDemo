@@ -5,8 +5,8 @@ Feature:
     @search
     Scenario: As an administrator I want to be able search for profiles by username
         Given the following profiles exist:
-            | email                    | attributes | requirements | city   | age |
-            | chelsea_blue@example.com | man        | woman        | London | 30  |
+            | email                    | attributes  | requirements  | city   | age |
+            | chelsea_blue@example.com | man, switch | woman, switch | London | 30  |
         And an administrator exists with email "admin@example.com"
         And I am logged in with "admin@example.com"
         And I am on "/moderator/search/username"
@@ -17,8 +17,8 @@ Feature:
     @search
     Scenario: As a moderator I want to be able search for profiles by usernmae
         Given the following profiles exist:
-            | email                    | attributes | requirements | city   | age |
-            | chelsea_blue@example.com | man        | woman        | London | 30  |
+            | email                    | attributes  | requirements  | city   | age |
+            | chelsea_blue@example.com | man, switch | woman, switch | London | 30  |
         And a moderator exists with email "moderator@example.com"
         And I am logged in with "moderator@example.com"
         And I am on "/moderator/search/username"

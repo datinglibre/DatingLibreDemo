@@ -5,13 +5,13 @@ Feature:
     @search
     Scenario: I can view paginated profiles
         Given the following profiles exist:
-            | email                 | attributes | requirements | city    | age |
-            | bristol_1@example.com | woman      | man          | Bristol | 30  |
-            | bath_1@example.com    | man        | woman        | Bath    | 30  |
-            | bath_2@example.com    | man        | woman        | Bath    | 30  |
-            | bath_3@example.com    | man        | woman        | Bath    | 30  |
-            | bath_4@example.com    | man        | woman        | Bath    | 30  |
-            | bath_5@example.com    | man        | woman        | Bath    | 30  |
+            | email                 | attributes      | requirements    | city    | age |
+            | bristol_1@example.com | woman, switch   | man, submissive | Bristol | 30  |
+            | bath_1@example.com    | man, submissive | woman, switch   | Bath    | 30  |
+            | bath_2@example.com    | man, submissive | woman, switch   | Bath    | 30  |
+            | bath_3@example.com    | man, submissive | woman, switch   | Bath    | 30  |
+            | bath_4@example.com    | man, submissive | woman, switch   | Bath    | 30  |
+            | bath_5@example.com    | man, submissive | woman, switch   | Bath    | 30  |
         And the following filters exist:
             | email                 | distance | min_age | max_age |
             | bristol_1@example.com | 100000   | 25      | 35      |
@@ -26,9 +26,9 @@ Feature:
     @search
     Scenario: I should not be able to view an unmoderated profile image in profiles
         Given the following profiles exist:
-            | email                 | attributes | requirements | city    | age |
-            | bristol_1@example.com | woman      | man          | Bristol | 30  |
-            | bath_1@example.com    | man        | woman        | Bath    | 30  |
+            | email                 | attributes    | requirements  | city    | age |
+            | bristol_1@example.com | woman, switch | man, switch   | Bristol | 30  |
+            | bath_1@example.com    | man, switch   | woman, switch | Bath    | 30  |
         And the following filters exist:
             | email                 | distance | min_age | max_age |
             | bristol_1@example.com | 100000   | 25      | 35      |
@@ -40,9 +40,9 @@ Feature:
     @search
     Scenario: I should be able to view a successfully moderated profile image in profiles
         Given the following profiles exist:
-            | email                 | attributes | requirements | city    | age |
-            | bristol_1@example.com | woman      | man          | Bristol | 30  |
-            | bath_1@example.com    | man        | woman        | Bath    | 30  |
+            | email                 | attributes    | requirements  | city    | age |
+            | bristol_1@example.com | woman, switch | man, switch   | Bristol | 30  |
+            | bath_1@example.com    | man, switch   | woman, switch | Bath    | 30  |
         And the following filters exist:
             | email                 | distance | min_age | max_age |
             | bristol_1@example.com | 100000   | 25      | 35      |
@@ -54,9 +54,9 @@ Feature:
     @search
     Scenario: I should not be able to view a failed moderated profile image in profiles
         Given the following profiles exist:
-            | email                 | attributes | requirements | city    | age |
-            | bristol_1@example.com | woman      | man          | Bristol | 30  |
-            | bath_1@example.com    | man        | woman        | Bath    | 30  |
+            | email                 | attributes    | requirements  | city    | age |
+            | bristol_1@example.com | woman, switch | man, switch   | Bristol | 30  |
+            | bath_1@example.com    | man, switch   | woman, switch | Bath    | 30  |
         And the following filters exist:
             | email                 | distance | min_age | max_age |
             | bristol_1@example.com | 100000   | 25      | 35      |
@@ -69,29 +69,29 @@ Feature:
     @search
     Scenario: I can select the next and previous page
         Given the following profiles exist:
-            | email                 | attributes | requirements | city    | age |
-            | bristol_1@example.com | woman      | man          | Bristol | 30  |
-            | bath_1@example.com    | man        | woman        | Bath    | 30  |
-            | bath_2@example.com    | man        | woman        | Bath    | 30  |
-            | bath_3@example.com    | man        | woman        | Bath    | 30  |
-            | bath_4@example.com    | man        | woman        | Bath    | 30  |
-            | bath_5@example.com    | man        | woman        | Bath    | 30  |
-            | bath_6@example.com    | man        | woman        | Bath    | 30  |
-            | bath_7@example.com    | man        | woman        | Bath    | 30  |
-            | bath_8@example.com    | man        | woman        | Bath    | 30  |
-            | bath_9@example.com    | man        | woman        | Bath    | 30  |
-            | bath_10@example.com   | man        | woman        | Bath    | 30  |
-            | bath_11@example.com   | man        | woman        | Bath    | 30  |
-            | bath_12@example.com   | man        | woman        | Bath    | 30  |
-            | bath_13@example.com   | man        | woman        | Bath    | 30  |
-            | bath_14@example.com   | man        | woman        | Bath    | 30  |
-            | bath_15@example.com   | man        | woman        | Bath    | 30  |
-            | bath_16@example.com   | man        | woman        | Bath    | 30  |
-            | bath_17@example.com   | man        | woman        | Bath    | 30  |
-            | bath_18@example.com   | man        | woman        | Bath    | 30  |
-            | bath_19@example.com   | man        | woman        | Bath    | 30  |
-            | bath_20@example.com   | man        | woman        | Bath    | 30  |
-            | bath_21@example.com   | man        | woman        | Bath    | 30  |
+            | email                 | attributes      | requirements    | city    | age |
+            | bristol_1@example.com | woman, switch   | man, submissive | Bristol | 30  |
+            | bath_1@example.com    | man, submissive | woman, switch   | Bath    | 30  |
+            | bath_2@example.com    | man, submissive | woman, switch   | Bath    | 30  |
+            | bath_3@example.com    | man, submissive | woman, switch   | Bath    | 30  |
+            | bath_4@example.com    | man, submissive | woman, switch   | Bath    | 30  |
+            | bath_5@example.com    | man, submissive | woman, switch   | Bath    | 30  |
+            | bath_6@example.com    | man, submissive | woman, switch   | Bath    | 30  |
+            | bath_7@example.com    | man, submissive | woman, switch   | Bath    | 30  |
+            | bath_8@example.com    | man, submissive | woman, switch   | Bath    | 30  |
+            | bath_9@example.com    | man, submissive | woman, switch   | Bath    | 30  |
+            | bath_10@example.com   | man, submissive | woman, switch   | Bath    | 30  |
+            | bath_11@example.com   | man, submissive | woman, switch   | Bath    | 30  |
+            | bath_12@example.com   | man, submissive | woman, switch   | Bath    | 30  |
+            | bath_13@example.com   | man, submissive | woman, switch   | Bath    | 30  |
+            | bath_14@example.com   | man, submissive | woman, switch   | Bath    | 30  |
+            | bath_15@example.com   | man, submissive | woman, switch   | Bath    | 30  |
+            | bath_16@example.com   | man, submissive | woman, switch   | Bath    | 30  |
+            | bath_17@example.com   | man, submissive | woman, switch   | Bath    | 30  |
+            | bath_18@example.com   | man, submissive | woman, switch   | Bath    | 30  |
+            | bath_19@example.com   | man, submissive | woman, switch   | Bath    | 30  |
+            | bath_20@example.com   | man, submissive | woman, switch   | Bath    | 30  |
+            | bath_21@example.com   | man, submissive | woman, switch   | Bath    | 30  |
         And the following filters exist:
             | email                 | distance | min_age | max_age |
             | bristol_1@example.com | 100000   | 25      | 35      |
