@@ -1,0 +1,33 @@
+{% extends '@DatingLibreApp/user/user.html.twig' %}
+{% block title %}Profile{% endblock %}
+{% block menu %}
+    {% from '@DatingLibreApp/macros/profile.image.html.twig' import profile_image %}
+    <a href="{{ path('user_profile_image') }}">{{ profile_image(profile.imageUrl) }}</a>
+    {% include '@DatingLibreApp/user/profile/menu.html.twig' %}
+{% endblock %}
+{% block content %}
+    {% if suspension is not null %}
+        {% from "@DatingLibreApp/user/profile/macros/profile.suspended.html.twig" import profile_suspended %}
+        {{ profile_suspended(suspension, profile.isPermanentlySuspended) }}
+    {% endif %}
+    {% from "@DatingLibreApp/user/profile/macros/profile.image.moderation.status.html.twig" import profile_image_moderation_status %}
+    {{ profile_image_moderation_status(profile.imagePresent, profile.imageUnmoderated, profile.imageRejected) }}
+    <h2>
+        {{ profile.username }}
+        {% from "@DatingLibreApp/macros/profile.header.html.twig" import profile_header %}
+        {{ profile_header(profile.age, profile.cityName, profile.regionName, profile.attributes) }}
+    </h2>
+    <div class="card border-light">
+        <div class="card-body">
+            {% if interests is not empty %}
+                <h4>{{ 'profile.interests'|trans }}</h4>
+                <ul>
+                    {% for interest in interests %}
+                        <li>{{ interest.name|trans({}, 'interests') }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+            {{ profile.about|nl2br }}
+        </div>
+    </div>
+{% endblock %}

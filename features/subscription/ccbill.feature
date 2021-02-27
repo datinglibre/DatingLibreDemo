@@ -107,8 +107,8 @@ Feature:
     @subscription
     Scenario: A CcBill CancellationEvent cancels a subscription
         Given the following profiles exist:
-           | email               |
-           | newuser@example.com |
+            | email               |
+            | newuser@example.com |
         When the user "newuser@example.com" has bought a new CcBill subscription that has ID "985938"
         And there has been a cancellation for "985938"
         Then a new "datinglibre.ccbill.cancellation" event should be created for "newuser@example.com"
@@ -121,8 +121,8 @@ Feature:
     @subscription
     Scenario: A CcBill ChargebackEvent marks the subscription as a chargeback
         Given the following profiles exist:
-          | email               |
-          | newuser@example.com |
+            | email               |
+            | newuser@example.com |
         When the user "newuser@example.com" has bought a new CcBill subscription that has ID "985938"
         And there has been a chargeback for "985938"
         Then a new "datinglibre.ccbill.chargeback" event should be created for "newuser@example.com"

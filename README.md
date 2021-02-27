@@ -1,55 +1,56 @@
+# DatingLibreDemo
 
-# DatingLibre
+![Build Status](https://github.com/datinglibre/datinglibredemo/actions/workflows/datinglibre.yml/badge.svg)
 
-![Build Status](https://github.com/datinglibre/datinglibre/actions/workflows/datinglibre.yml/badge.svg)
+The code used to power [DatingLibre.com](https://datinglibre.com).
 
-DatingLibre is an open source white-label dating site platform (implemented as a Symfony bundle). It uses: 
-- `PHP` 7.4 or 8.0
-- Symfony
-- PostgreSQL
-- Amazon `SES`
-- Amazon `S3` (or a compatible service) 
-- Ansible.
+This repository is used as a demonstration on how to customize the [reference implementation](https://github.com/datinglibre/DatingLibre) using sex and relationship categories.
 
-DatingLibre is made up of the following repositories:
-- the reference implementation (this repository) which uses the test categories `color` and `shape`, and contains the Behat test scenarios.
-- the [datinglibre-app-bundle](https://github.com/datinglibre/datinglibre-app-bundle) which contains controllers, repositories, services, entities, database migrations and Behat test contexts.
-- the [DatingLibreDemo](https://github.com/datinglibre/DatingLibreDemo) repository, which shows how the `datinglibre-app-bundle` can be 
-overridden to build a custom website: overriding functionality as required, whilst leaving the rest of the bundle upgradable via `composer upgrade`. The code in this repository is deployed to the live test site, which can be seen at [datinglibre.com](https://datinglibre.com).
-  
-All PRs should be opened against this reference repository and/or the [datinglibre-app-bundle](https://github.com/datinglibre/datinglibre-app-bundle).
+Other demo branches:
+- [![Build Status](https://github.com/datinglibre/datinglibredemo/actions/workflows/datinglibre.yml/badge.svg?branch=alternative)](https://github.com/datinglibre/DatingLibreDemo/actions?query=branch%3Aalternative) [alternative](https://github.com/datinglibre/DatingLibreDemo/tree/alternative) categories based on D/s relationships.
 
-## Documentation
+Please open pull requests against the [reference implementation](https://github.com/datinglibre/DatingLibre) and the [dating-libre-app-bundle](https://github.com/datinglibre/datinglibre-app-bundle).
 
-[User guide](https://github.com/datinglibre/DatingLibre/wiki#user-guide).
+For further information on how to customize the [datinglibre-app-bundle](https://github.com/datinglibre/datinglibre-app-bundle), see the [DatingLibre Wiki](https://github.com/datinglibre/DatingLibre/wiki/Customization) and [how to override a Symfony bundle](https://symfony.com/doc/current/bundles/override.html).
 
-[Developer guide](https://github.com/datinglibre/DatingLibre/wiki#developer-guide). Start with the [Development](https://github.com/datinglibre/DatingLibre/wiki/Development) section to set up the project on a local machine.
+The following files were changed/created in order to create the demo site:
 
-## Features
+### Configuration
+- `config/packages/dating_libre.yaml`
 
-- [Automated deployment using Ansible](https://github.com/datinglibre/DatingLibre/wiki/Deploy-production)
-- Register account, with a private reminder if an email address already exists.
-- Payment providers: [CCBill](https://github.com/datinglibre/DatingLibre/wiki/CCBill).  
-- Confirm account through email.
-- Reset password.
-- Create a profile.
-- Upload a profile image.
-- Search by radius and/or region, through a provided [dataset](https://github.com/datinglibre/locations) of the latitudes and longitudes of the world's significant towns and cities.
-- Search by interest.  
-- Browse through profiles, using keyset pagination.
-- Block users.
-- Report users.
-- Moderate user reports.
-- Suspend users.  
-- Moderate profile images.
-- Delete account.
+### Controllers
+- `src/Controller/UserProfileEditController.php`
+- `src/Controller/UserSearchIndexController.php`
 
-![Image showing profile edit page](https://raw.githubusercontent.com/wiki/datinglibre/DatingLibre/images/profile_image_awaiting_moderation.png "Profile edit page")
+### Forms
+- `src/Form/ProfileForm.php`
+- `src/Form/ProfileFormType.php`
+- `src/Form/RequirementsForm.php`
+- `src/Form/RequirementsFormType.php`
+
+### Twig templates
+- `templates/bundles/DatingLibreAppBundle/user/profile/index.html.twig`
+- `templates/bundles/DatingLibreAppBundle/user/profile/edit.html.twig`
+- `templates/bundles/DatingLibreAppBundle/user/search/index.html.twig`
+
+### Routes
+
+The routes were imported from the [datinglibre-app-bundle](https://github.com/datinglibre/datinglibre-app-bundle), 
+and, where necessary, overridden with routes to our own controllers above.
+
+- `config/routes/datinglibre_demo.xml`
+
+### Tests
+
+The behat features in `features/` were updated using find+replace. 
 
 ## Credits
 
 The `countries.sql` `regions.sql` and `cities.sql` files were created by processing geographical data from [GeoNames](https://www.geonames.org/)
 and are licensed under [Attribution 4.0 International (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/).
+
+The `src/Security/LoginFormAuthenticator.php` is based on Symfony documentation [How to build a login form](https://symfony.com/doc/current/security/form_login_setup.html)
+and is licensed under [Creative Commons BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/).
 
 ## Licence
 

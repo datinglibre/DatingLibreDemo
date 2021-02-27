@@ -1,0 +1,3 @@
+{% macro profile_header(age, cityName, regionName, attributes) %}
+    <small class="text-muted">{% for attribute in attributes %}{% if attribute == "man" or attribute == "woman" %}{{ (attribute ~ '_letter')|trans({}, 'attributes') }}{% endif %}{% endfor %}. {{ age }}. {{ cityName }}, {{ regionName }}.</small>
+{% endmacro %}

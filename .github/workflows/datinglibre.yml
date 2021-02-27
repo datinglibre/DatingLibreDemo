@@ -1,8 +1,10 @@
-name: DatingLibre GitHub CI
+name: DatingLibreDemo GitHub CI
 on:
   push:
     branches:
       - master
+      - alternative
+      - simple
     paths-ignore:
       - '**/README.md'
       - 'deploy/**'

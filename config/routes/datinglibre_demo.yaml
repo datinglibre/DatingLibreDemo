@@ -1,0 +1,20 @@
+# install routes from the DatingLibreAppBundle
+_datinglibre:
+  resource: '@DatingLibreAppBundle/Resources/config/routes.yaml'
+  prefix: /
+
+# Only override the following routes
+user_profile_edit:
+  controller: App\Controller\UserProfileEditController::edit
+  path: /profile/edit
+  methods: GET|POST
+
+user_profile_index:
+  controller: App\Controller\UserProfileIndexController::index
+  path: /profile
+  methods: GET
+
+user_search_index:
+  controller: App\Controller\UserSearchIndexController::index
+  path: /search
+  methods: GET|POST

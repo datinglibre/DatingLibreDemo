@@ -4,9 +4,9 @@ Feature:
     @block
     Scenario: I want to block another user
         Given the following profiles exist:
-            | email                          | attributes     | requirements   | city   | age |
-            | chelsea_blue@example.com       | blue, square   | yellow, circle | London | 30  |
-            | westminster_yellow@example.com | yellow, circle | blue, square   | London | 30  |
+            | email                          | attributes | requirements | city   | age |
+            | chelsea_blue@example.com       | man        | woman        | London | 30  |
+            | westminster_yellow@example.com | woman      | man          | London | 30  |
         And the following blocks exist
             | email                    | block                          |
             | chelsea_blue@example.com | westminster_yellow@example.com |
@@ -15,7 +15,7 @@ Feature:
         Then I should see "westminster_yellow"
         And I should see "30"
         And I should see "London"
-        And I should see "Circle"
+        And I should see "M"
         And I follow "westminster_yellow"
         And I follow "Unblock"
         And I press "Confirm"

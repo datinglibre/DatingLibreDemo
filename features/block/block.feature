@@ -4,9 +4,9 @@ Feature:
     @block
     Scenario: I want to block another user
         Given the following profiles exist:
-            | email                          | attributes     | requirements   | city   | age |
-            | chelsea_blue@example.com       | blue, square   | yellow, circle | London | 30  |
-            | westminster_yellow@example.com | yellow, circle | blue, square   | London | 30  |
+            | email                          | attributes | requirements | city   | age |
+            | chelsea_blue@example.com       | woman      | man          | London | 30  |
+            | westminster_yellow@example.com | man        | woman        | London | 30  |
         And the following filters exist:
             | email                    | distance | min_age | max_age |
             | chelsea_blue@example.com | 100000   | 18      | 100     |
@@ -19,9 +19,9 @@ Feature:
     @block
     Scenario: I have been blocked by another user
         Given the following profiles exist:
-            | email                          | attributes     | requirements   | city   | age |
-            | chelsea_blue@example.com       | blue, square   | yellow, circle | London | 30  |
-            | westminster_yellow@example.com | yellow, circle | blue, square   | London | 30  |
+            | email                          | attributes | requirements | city   | age |
+            | chelsea_blue@example.com       | woman      | man          | London | 30  |
+            | westminster_yellow@example.com | man        | woman        | London | 30  |
         And the following filters exist:
             | email                          | distance | min_age | max_age |
             | westminster_yellow@example.com | 100000   | 18      | 100     |
@@ -34,9 +34,9 @@ Feature:
     @block
     Scenario: If I have been blocked, I should lose access to their profile
         Given the following profiles exist:
-            | email                          | attributes     | requirements   | city   | age |
-            | chelsea_blue@example.com       | blue, square   | yellow, circle | London | 30  |
-            | westminster_yellow@example.com | yellow, circle | blue, square   | London | 30  |
+            | email                          | attributes | requirements | city   | age |
+            | chelsea_blue@example.com       | man        | woman        | London | 30  |
+            | westminster_yellow@example.com | woman      | man          | London | 30  |
         And the following blocks exist
             | email                    | block                          |
             | chelsea_blue@example.com | westminster_yellow@example.com |
@@ -48,9 +48,9 @@ Feature:
     @block
     Scenario: I can block another user
         Given the following profiles exist:
-            | email                          | attributes     | requirements   | city   | age |
-            | chelsea_blue@example.com       | blue, square   | yellow, circle | London | 30  |
-            | westminster_yellow@example.com | yellow, circle | blue, square   | London | 30  |
+            | email                          | attributes | requirements | city   | age |
+            | chelsea_blue@example.com       | woman      | man          | London | 30  |
+            | westminster_yellow@example.com | man        | woman        | London | 30  |
         And I am logged in with "chelsea_blue@example.com"
         And I am on "/search"
         Then I should see "westminster_yellow"
@@ -64,9 +64,9 @@ Feature:
     @block
     Scenario: I should not see an unmoderated profile image on the user's block page
         Given the following profiles exist:
-            | email                          | attributes     | requirements   | city   | age |
-            | chelsea_blue@example.com       | blue, square   | yellow, circle | London | 30  |
-            | westminster_yellow@example.com | yellow, circle | blue, square   | London | 30  |
+            | email                          | attributes | requirements | city   | age |
+            | chelsea_blue@example.com       | woman      | man          | London | 30  |
+            | westminster_yellow@example.com | man        | woman        | London | 30  |
         And the user "westminster_yellow@example.com" has uploaded a profile image
         And I am logged in with "chelsea_blue@example.com"
         And I am on "/search"

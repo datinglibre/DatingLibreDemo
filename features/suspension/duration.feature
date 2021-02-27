@@ -5,9 +5,9 @@ Feature:
     @suspension
     Scenario: A moderator can suspend a user
         Given the following profiles exist:
-            | email                 | city   | age |
-            | reporter@example.com  | London | 30  |
-            | suspended@example.com | London | 30  |
+            | email                 |
+            | reporter@example.com  |
+            | suspended@example.com |
         And the user "reporter@example.com" has reported "suspended@example.com"
         And a moderator exists with email "moderator@example.com"
         And I am logged in with "moderator@example.com"
@@ -24,8 +24,8 @@ Feature:
     @suspension
     Scenario: A user loses access to the site when they are suspended
         Given the following profiles exist:
-            | email               | city   | age |
-            | newuser@example.com | London | 30  |
+            | email               | attributes |
+            | newuser@example.com | man        |
         And a moderator exists with email "moderator@example.com"
         And the moderator "moderator@example.com" has suspended "newuser@example.com" for "spam" for "72" hours
         Then the user "newuser@example.com" should receive a suspension email for "Spam" for "72" hours
@@ -40,8 +40,8 @@ Feature:
     @suspension
     Scenario: When a moderator creates another suspension, the previous suspension will be closed
         Given the following profiles exist:
-            | email               | city   | age |
-            | newuser@example.com | London | 30  |
+            | email               |
+            | newuser@example.com |
         And a moderator exists with email "moderator@example.com"
         And the moderator "moderator@example.com" has suspended "newuser@example.com" for "spam" for "72" hours
         And the moderator "moderator@example.com" has suspended "newuser@example.com" for "spam" for "72" hours
@@ -50,8 +50,8 @@ Feature:
     @suspension
     Scenario: A moderator can view expired suspensions
         Given the following profiles exist:
-            | email               | city   | age |
-            | newuser@example.com | London | 30  |
+            | email               |
+            | newuser@example.com |
         And a moderator exists with email "moderator@example.com"
         And the moderator "moderator@example.com" has suspended "newuser@example.com" for "spam" for "72" hours
         When "73" hours has elapsed for the suspension under "newuser@example.com"
@@ -65,8 +65,8 @@ Feature:
     @suspension
     Scenario: A moderator does not view suspensions that have not expired
         Given the following profiles exist:
-            | email               | city   | age |
-            | newuser@example.com | London | 30  |
+            | email               |
+            | newuser@example.com |
         And a moderator exists with email "moderator@example.com"
         And the moderator "moderator@example.com" has suspended "newuser@example.com" for "spam" for "72" hours
         And I log in using email "moderator@example.com"
@@ -76,8 +76,8 @@ Feature:
     @suspension
     Scenario: A moderator can close a suspension
         Given the following profiles exist:
-            | email               | city   | age |
-            | newuser@example.com | London | 30  |
+            | email               |
+            | newuser@example.com |
         And a moderator exists with email "moderator@example.com"
         And the moderator "moderator@example.com" has suspended "newuser@example.com" for "spam" for "72" hours
         And the user "newuser@example.com" should receive a suspension email for "Spam" for "72" hours

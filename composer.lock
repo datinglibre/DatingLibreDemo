@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "92863bdad04ab09ccd7d804ad7809ef5",
+    "content-hash": "d821286d1654e64235648252c80bfcd8",
     "packages": [
         {
             "name": "async-aws/core",
@@ -417,6 +417,60 @@
                 "source": "https://github.com/datinglibre/datinglibre-app-bundle/tree/v0.58.0"
             },
             "time": "2021-07-21T12:52:17+00:00"
+        },
+        {
+            "name": "datinglibre/datinglibre-ccbill-bundle",
+            "version": "v0.4.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/datinglibre/datinglibre-ccbill-bundle.git",
+                "reference": "767d72d14c4c20dfc24de45eeac8994c9340c22b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/datinglibre/datinglibre-ccbill-bundle/zipball/767d72d14c4c20dfc24de45eeac8994c9340c22b",
+                "reference": "767d72d14c4c20dfc24de45eeac8994c9340c22b",
+                "shasum": ""
+            },
+            "require": {
+                "datinglibre/ccbill": "^0.11.0",
+                "ext-json": "*",
+                "ext-simplexml": "*",
+                "php": "^7.4||^8.0",
+                "psr/container": "^1.0",
+                "symfony/console": "5.2.*||5.3.*",
+                "symfony/dotenv": "5.2.*||5.3.*",
+                "symfony/framework-bundle": "5.2.*||5.3.*",
+                "symfony/http-client": "5.2.*||5.3.*",
+                "symfony/serializer": "5.2.*||5.3.*"
+            },
+            "require-dev": {
+                "doctrine/doctrine-fixtures-bundle": "^3.3",
+                "friendsofphp/php-cs-fixer": "^2.16",
+                "symfony/phpunit-bridge": "^5.3"
+            },
+            "type": "symfony-bundle",
+            "autoload": {
+                "psr-4": {
+                    "DatingLibre\\CcBillBundle\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Dating Libre CcBill Bundle",
+                    "email": "admin@datinglibre.com"
+                }
+            ],
+            "description": "DatingLibre CcBill Client",
+            "support": {
+                "issues": "https://github.com/datinglibre/datinglibre-ccbill-bundle/issues",
+                "source": "https://github.com/datinglibre/datinglibre-ccbill-bundle/tree/v0.4.0"
+            },
+            "time": "2021-07-05T17:32:54+00:00"
         },
         {
             "name": "doctrine/annotations",

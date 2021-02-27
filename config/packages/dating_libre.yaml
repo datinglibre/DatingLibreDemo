@@ -1,10 +1,10 @@
 dating_libre_app:
-    site_name: 'Dating Libre'
-    site_description: 'Description of the site'
-    admin_email: '"Dating Libre Staging" <admin@example.com>'
+    site_name: 'Dating Libre Demo'
+    site_description: 'A demonstration of an open source dating platform'
+    admin_email: '"Dating Libre" <admin@datinglibre.com>'
     images_bucket: dlibreim
-    image_upload: true
-    is_demo: false
+    image_upload: false
+    is_demo: true
     payment_providers:
         datinglibre:
             url: https://datinglibre.com
@@ -14,22 +14,16 @@ dating_libre_app:
     # and as translation keys. Ansible will generate and run
     # SQL to automatically add them to the database.
     categories:
-    - color
-    - shape
+    - sex
     attributes:
-        color:
-        - blue
-        - green
-        - yellow
-        shape:
-        - square
-        - circle
-        - triangle
+        sex:
+        - man
+        - woman
     interests:
-    - north
-    - south
-    - east
-    - west
+        - music
+        - reading
+        - sports
+        - fitness
     rules:
     - spam
     - abusive_messages

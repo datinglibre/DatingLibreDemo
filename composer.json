@@ -1,14 +1,15 @@
 {
     "type": "project",
     "license": "MIT",
-    "name": "datinglibre/datinglibre",
-    "description": "The reference implementation of DatingLibre",
+    "name": "datinglibre/datinglibre-demo",
+    "description": "A demonstration of how to customize the datinglibre-app-bundle",
     "require": {
         "php": "^7.4||^8.0",
         "ext-ctype": "*",
         "ext-iconv": "*",
         "ext-json": "*",
         "datinglibre/datinglibre-app-bundle": "^0.58.0",
+        "datinglibre/datinglibre-ccbill-bundle": "^0.4.0",
         "doctrine/doctrine-migrations-bundle": "^3.0",
         "martin-georgiev/postgresql-for-doctrine": "^1.5",
         "sensio/framework-extra-bundle": "^5.4",

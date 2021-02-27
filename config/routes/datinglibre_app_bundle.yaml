@@ -1,3 +1,0 @@
-_datinglibre_app_bundle:
-  resource: '@DatingLibreAppBundle/Resources/config/routes.yaml'
-  prefix: /

@@ -1,0 +1,43 @@
+{% extends '@DatingLibreApp/user/user.html.twig' %}
+{% block title %}{{ 'search.search'|trans }}{% endblock %}
+
+{% block menu %}
+    <div class="panel panel-default">
+        <div class="panel-body">
+            {% form_theme filterForm 'bootstrap_4_layout.html.twig' %}
+            {{ form(filterForm) }}
+        </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+    {% if profiles is empty %}
+        <p class="alert-warning alert">{{ 'search.no_results'|trans }}</p>
+    {% endif %}
+
+    {% from "@DatingLibreApp/macros/profile.header.html.twig" import profile_header %}
+    {% if profiles is not empty %}
+        <ul class="list-unstyled">
+            {% for profile in profiles %}
+                <li class="media">
+                    <img src="{% if profile.imageUrl is null %}/profile.jpg{% else %}{{ profile.imageUrl }}{% endif %}" class="mr-3" alt="" height="64" width="64">
+                    <div class="media-body">
+                        <h5 class="mt-0 mb-1"><a href="{{ path('user_profile_view', {'userId': profile.id}) }}">{{ profile.username }}</a> {{ profile_header(profile.age, profile.cityName, profile.regionName, profile.attributes) }}</h5>
+                        <p>{{ profile.about|u.truncate(100, '...') }}</p>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+
+        <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-center">
+                <li class="page-item {% if previous is empty %}disabled{% endif %}">
+                    <a class="page-link" href="{{  path('user_search_index', previous) }}" {% if previous is empty %}aria-disabled="true"{% endif %}>{{ 'controls.previous'|trans }}</a>
+                </li>
+                <li class="page-item {% if next is empty %}disabled{% endif %}">
+                    <a class="page-link" href="{{ path('user_search_index', next) }}" {% if next is empty %}aria-disabled="true"{% endif %}>{{ 'controls.next'|trans }}</a>
+                </li>
+            </ul>
+        </nav>
+    {% endif %}
+{% endblock %}
