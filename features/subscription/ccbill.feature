@@ -5,16 +5,35 @@ Feature:
     @subscription
     Scenario: A CcBill NewSaleSuccessEvent is persisted as an event
         Given the following profiles exist:
-            | email               | city   | age |
-            | newuser@example.com | London | 30  |
+            | email               |
+            | newuser@example.com |
         When the user "newuser@example.com" has bought a new CcBill subscription that has ID "985938"
         Then a new "datinglibre.ccbill.newsale" event should be created for "newuser@example.com"
         And a new "ccbill" subscription is created for "newuser@example.com" with provider subscription ID "985938"
 
     @subscription
+    Scenario: I am able to cancel my new subscription
+        Given the following profiles exist:
+            | email               |
+            | newuser@example.com |
+        When the user "newuser@example.com" has bought a new CcBill subscription that has ID "985938"
+        And I am logged in with "newuser@example.com"
+        And I am on "/account/subscription"
+        Then I should see "Cancel CCBill subscription"
+
+    @subscription
     Scenario: A CcBill NewSaleSuccessEvent with an unknown user ID is raised as an error
         Given a new sale success event with an unknown user ID
+        And an administrator exists with email "admin@example.com"
         Then a new "datinglibre.subscription.error" event with a data payload should be created
+        And I am logged in with "admin@example.com"
+        And I am on "/admin/subscription/events"
+        Then I should see "error"
+        And I should see "Could not find user"
+        And I should see "email"
+        And I should see "user@randomurl.com"
+        And I should see "paymentType"
+        And I should see "CREDIT"
 
     @subscription
     Scenario: A CcBill NewSaleSuccessEvent with a missing user ID is raised as an error
@@ -24,8 +43,8 @@ Feature:
     @subscription
     Scenario: A CcBill NewSaleFailureEvent is persisted as an event
         Given the following profiles exist:
-            | email               | city   | age |
-            | newuser@example.com | London | 30  |
+            | email               |
+            | newuser@example.com |
         When the user "newuser@example.com" has failed to buy a new CcBill subscription
         Then a new "datinglibre.ccbill.new_sale_failure" event should be created for "newuser@example.com"
 
@@ -37,8 +56,8 @@ Feature:
     @subscription
     Scenario: I can view my subscription on the account page
         Given the following profiles exist:
-            | email               | city   | age |
-            | newuser@example.com | London | 30  |
+            | email               |
+            | newuser@example.com |
         When the user "newuser@example.com" has bought a new CcBill subscription that has ID "985938"
         And I am logged in with "newuser@example.com"
         And I am on "/account/subscription"
@@ -50,8 +69,8 @@ Feature:
     @subscription
     Scenario: A CcBill RenewalSuccessEvent renews a subscription
         Given the following profiles exist:
-            | email               | city   | age |
-            | newuser@example.com | London | 30  |
+            | email               |
+            | newuser@example.com |
         When the user "newuser@example.com" has bought a new CcBill subscription that has ID "985938"
         And there has been a rebill for subscription "985938" with next renewal date "2020-09-20"
         Then a new "datinglibre.ccbill.renewal" event should be created for "newuser@example.com"
@@ -62,10 +81,21 @@ Feature:
         And I should not see "Buy a subscription"
 
     @subscription
+    Scenario: A CcBill RenewalSuccessEvent with an unrecognized subscription ID saves an error event
+        Given an administrator exists with email "admin@example.com"
+        And there has been a rebill for subscription "123459876" with next renewal date "2020-09-20"
+        And I am logged in with "admin@example.com"
+        And I am on "admin/subscription/events"
+        Then I should see "error"
+        And I should see "No user found for subscription"
+        And I should see "subscriptionId"
+        And I should see "123459876"
+
+    @subscription
     Scenario: A CcBill RenewalFailureEvent moves subscription into renewal failed state
         Given the following profiles exist:
-            | email               | city   | age |
-            | newuser@example.com | London | 30  |
+            | email               |
+            | newuser@example.com |
         When the user "newuser@example.com" has bought a new CcBill subscription that has ID "985938"
         And there has been a failed rebill for subscription "985938" with next retry date "2020-08-23"
         Then a new "datinglibre.ccbill.renewal_failure" event should be created for "newuser@example.com"
@@ -77,8 +107,8 @@ Feature:
     @subscription
     Scenario: A CcBill CancellationEvent cancels a subscription
         Given the following profiles exist:
-           | email               | city   | age |
-           | newuser@example.com | London | 30  |
+           | email               |
+           | newuser@example.com |
         When the user "newuser@example.com" has bought a new CcBill subscription that has ID "985938"
         And there has been a cancellation for "985938"
         Then a new "datinglibre.ccbill.cancellation" event should be created for "newuser@example.com"
@@ -91,8 +121,8 @@ Feature:
     @subscription
     Scenario: A CcBill ChargebackEvent marks the subscription as a chargeback
         Given the following profiles exist:
-          | email               | city   | age |
-          | newuser@example.com | London | 30  |
+          | email               |
+          | newuser@example.com |
         When the user "newuser@example.com" has bought a new CcBill subscription that has ID "985938"
         And there has been a chargeback for "985938"
         Then a new "datinglibre.ccbill.chargeback" event should be created for "newuser@example.com"
@@ -104,8 +134,8 @@ Feature:
     @subscription
     Scenario: a CcBill RefundEvent marks the subscription as refunded
         Given the following profiles exist:
-            | email               | city   | age |
-            | newuser@example.com | London | 30  |
+            | email               |
+            | newuser@example.com |
         When the user "newuser@example.com" has bought a new CcBill subscription that has ID "985938"
         And there has been a refund for "985938"
         Then a new "datinglibre.ccbill.refund" event should be created for "newuser@example.com"
@@ -117,8 +147,8 @@ Feature:
     @subscription
     Scenario: a CcBill BillingDateChange event changes the next renewal date
         Given the following profiles exist:
-            | email               | city   | age |
-            | newuser@example.com | London | 30  |
+            | email               |
+            | newuser@example.com |
         When the user "newuser@example.com" has bought a new CcBill subscription that has ID "985938"
         And there has been a billing date change for "985938" to "2021-02-01"
         Then a new "datinglibre.ccbill.billing_date_change" event should be created for "newuser@example.com"
@@ -130,8 +160,8 @@ Feature:
     @subscription
     Scenario: a CcBill Expiration event expires the subscription
         Given the following profiles exist:
-            | email               | city   | age |
-            | newuser@example.com | London | 30  |
+            | email               |
+            | newuser@example.com |
         When the user "newuser@example.com" has bought a new CcBill subscription that has ID "985938"
         And there has been an expiration event for "985938"
         Then a new "datinglibre.ccbill.expiration" event should be created for "newuser@example.com"
