@@ -44,7 +44,7 @@ Start with the [Development](https://github.com/datinglibre/DatingLibre/wiki/Dev
 - Moderate profile images.
 - Delete account.
 
-![Image showing profile edit page](https://raw.githubusercontent.com/datinglibre/datinglibre.github.io/main/profile.png "Profile edit page")
+![Image showing profile edit page](https://raw.githubusercontent.com/wiki/datinglibre/DatingLibre/images/profile_image_awaiting_moderation.png "Profile edit page")
 
 ## Credits
 
