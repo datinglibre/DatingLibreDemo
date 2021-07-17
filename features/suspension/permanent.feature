@@ -3,11 +3,11 @@ Feature:
     I can queue a user for permanent suspension
 
     @suspension
-    Scenario: A moderator can enter a user into the permanent suspension queue. The user is not allowed to edit profile.
+    Scenario: A moderator can enter a user into the permanent suspension queue.
         Given the following profiles exist:
-            | email                 | city   | age |
-            | reporter@example.com  | London | 30  |
-            | suspended@example.com | London | 30  |
+            | email                 |
+            | reporter@example.com  |
+            | suspended@example.com |
         And the user "reporter@example.com" has reported "suspended@example.com"
         And a moderator exists with email "moderator@example.com"
         And I am logged in with "moderator@example.com"
@@ -17,6 +17,7 @@ Feature:
         And I should see "Are you sure you want to suspend and enter this profile into the permanent suspension queue?"
         And I check "Abusive messages"
         And I press "Confirm"
+        And the user "suspended@example.com" should receive a suspension email for "Abusive messages"
         Then I should see "Profile has been entered into queue for permanent suspension"
         And I should not see "Are you sure you want to suspend and enter this profile into the permanent suspension queue?"
         And I follow "profile-menu-suspensions"
@@ -32,9 +33,9 @@ Feature:
     @suspension
     Scenario: An administrator can permanently suspend a profile
         Given the following profiles exist:
-            | email                 | city   | age |
-            | reporter@example.com  | London | 30  |
-            | suspended@example.com | London | 30  |
+            | email                 |
+            | reporter@example.com  |
+            | suspended@example.com |
         And the user "reporter@example.com" has reported "suspended@example.com"
         And an administrator exists with email "admin@example.com"
         And I am logged in with "admin@example.com"
@@ -52,8 +53,8 @@ Feature:
     @suspension
     Scenario: A permanent suspension by an administrator overrides a previous suspension
         Given the following profiles exist:
-            | email               | city   | age |
-            | newuser@example.com | London | 30  |
+            | email               |
+            | newuser@example.com |
         And a moderator exists with email "moderator@example.com"
         And the moderator "moderator@example.com" has suspended "newuser@example.com" for "spam" for "72" hours
         And an administrator exists with email "admin@example.com"
@@ -63,8 +64,8 @@ Feature:
     @suspension
     Scenario: An administrator can confirm a permanent suspension
         Given the following profiles exist:
-            | email               | city   | age |
-            | newuser@example.com | London | 30  |
+            | email               |
+            | newuser@example.com |
         And a moderator exists with email "moderator@example.com"
         And the moderator "moderator@example.com" has entered "newuser@example.com" into the permanent suspension queue
         And an administrator exists with email "admin@example.com"
@@ -91,8 +92,8 @@ Feature:
    @suspension
    Scenario: An administrator can close a permanent suspension
        Given the following profiles exist:
-           | email               | city   | age |
-           | newuser@example.com | London | 30  |
+           | email               |
+           | newuser@example.com |
        And a moderator exists with email "moderator@example.com"
        And the moderator "moderator@example.com" has entered "newuser@example.com" into the permanent suspension queue
        And an administrator exists with email "admin@example.com"
@@ -111,8 +112,8 @@ Feature:
    @suspension
    Scenario: a permanent suspension results in a cancelled subscription
        Given the following profiles exist:
-           | email               | city   | age |
-           | newuser@example.com | London | 30  |
+           | email               |
+           | newuser@example.com |
        And the user "newuser@example.com" has a "datinglibre" subscription with ID "985938"
        And an administrator exists with email "admin@example.com"
        And the administrator "admin@example.com" has permanently suspended "newuser@example.com"
@@ -126,3 +127,14 @@ Feature:
        And I should see "Cancelled"
        And I should see "Your profile has been suspended."
        Then I should not see "Buy a subscription"
+
+   @suspension
+   Scenario: A user with a permanent suspension cannot change their profile image
+       Given the following profiles exist:
+           | email               |
+           | newuser@example.com |
+       And an administrator exists with email "admin@example.com"
+       And the administrator "admin@example.com" has permanently suspended "newuser@example.com"
+       And I am logged in with "newuser@example.com"
+       And I am on "/profile/image"
+       Then I should see "your profile has been permanently suspended for the reasons below"

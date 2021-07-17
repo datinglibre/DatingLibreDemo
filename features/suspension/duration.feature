@@ -31,11 +31,11 @@ Feature:
         Then the user "newuser@example.com" should receive a suspension email for "Spam" for "72" hours
         And I log in using email "newuser@example.com"
         And I am on "/profile"
-        Then I should see "your profile has been suspended for the reasons below. It will be reviewed after 72 hours."
+        Then I should see "your profile has been suspended, for the reasons below. The suspension will be queued for reviewal after 72 hours."
         And I am on "/search"
-        Then I should see "your profile has been suspended for the reasons below. It will be reviewed after 72 hours."
+        Then I should see "your profile has been suspended, for the reasons below. The suspension will be queued for reviewal after 72 hours."
         And I am on "/matches"
-        Then I should see "your profile has been suspended for the reasons below. It will be reviewed after 72 hours."
+        Then I should see "your profile has been suspended, for the reasons below. The suspension will be queued for reviewal after 72 hours."
 
     @suspension
     Scenario: When a moderator creates another suspension, the previous suspension will be closed
