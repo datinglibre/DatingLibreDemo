@@ -34,6 +34,7 @@ dating_libre_app:
     - spam
     - abusive_messages
     - offsite_linking
+    first_message_require_subscription: false
     testing_user_email_addresses:
     - admin@datinglibre.com
 
