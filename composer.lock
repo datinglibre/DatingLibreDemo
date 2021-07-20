@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c060b6c646c0f17bdd3cbd7609036d59",
+    "content-hash": "dfd637271a1bc8e787bb85bc8b0c75cb",
     "packages": [
         {
             "name": "async-aws/core",
@@ -132,16 +132,16 @@
         },
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.185.15",
+            "version": "3.185.16",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "7be5e72149456b0c184908c6ae58a65c4d2c4767"
+                "reference": "5119dd32edda30c191ed1f6bcd3b48d717200de6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/7be5e72149456b0c184908c6ae58a65c4d2c4767",
-                "reference": "7be5e72149456b0c184908c6ae58a65c4d2c4767",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/5119dd32edda30c191ed1f6bcd3b48d717200de6",
+                "reference": "5119dd32edda30c191ed1f6bcd3b48d717200de6",
                 "shasum": ""
             },
             "require": {
@@ -216,9 +216,9 @@
             "support": {
                 "forum": "https://forums.aws.amazon.com/forum.jspa?forumID=80",
                 "issues": "https://github.com/aws/aws-sdk-php/issues",
-                "source": "https://github.com/aws/aws-sdk-php/tree/3.185.15"
+                "source": "https://github.com/aws/aws-sdk-php/tree/3.185.16"
             },
-            "time": "2021-07-16T18:14:19+00:00"
+            "time": "2021-07-19T18:14:16+00:00"
         },
         {
             "name": "composer/package-versions-deprecated",
@@ -341,16 +341,16 @@
         },
         {
             "name": "datinglibre/datinglibre-app-bundle",
-            "version": "v0.55.0",
+            "version": "v0.56.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/datinglibre/datinglibre-app-bundle.git",
-                "reference": "8b2aec566d1200ce0e837641e8818889b9e7709b"
+                "reference": "e3980598bdd650a672eaf52f2493a94992139b20"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/datinglibre/datinglibre-app-bundle/zipball/8b2aec566d1200ce0e837641e8818889b9e7709b",
-                "reference": "8b2aec566d1200ce0e837641e8818889b9e7709b",
+                "url": "https://api.github.com/repos/datinglibre/datinglibre-app-bundle/zipball/e3980598bdd650a672eaf52f2493a94992139b20",
+                "reference": "e3980598bdd650a672eaf52f2493a94992139b20",
                 "shasum": ""
             },
             "require": {
@@ -414,9 +414,9 @@
             "description": "The core overridable code of DatingLibre",
             "support": {
                 "issues": "https://github.com/datinglibre/datinglibre-app-bundle/issues",
-                "source": "https://github.com/datinglibre/datinglibre-app-bundle/tree/v0.55.0"
+                "source": "https://github.com/datinglibre/datinglibre-app-bundle/tree/v0.56.0"
             },
-            "time": "2021-07-19T08:37:59+00:00"
+            "time": "2021-07-20T10:02:04+00:00"
         },
         {
             "name": "doctrine/annotations",

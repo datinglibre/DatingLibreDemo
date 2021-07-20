@@ -21,6 +21,7 @@ Feature:
         And I should see "bath_3"
         And I should see "bath_4"
         And I should see "bath_5"
+        And I should see "Circle"
 
     @search
     Scenario: I should not be able to view an unmoderated profile image in profiles

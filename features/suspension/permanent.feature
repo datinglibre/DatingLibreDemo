@@ -125,7 +125,8 @@ Feature:
        And I should see "Spam"
        And I am on "/account/subscription"
        And I should see "Cancelled"
-       And I should see "Your profile has been suspended."
+       And I should see "Your profile has been permanently suspended for the reasons below"
+       And I should see "Your subscription, if it exists, has been cancelled"
        Then I should not see "Buy a subscription"
 
    @suspension

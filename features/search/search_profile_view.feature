@@ -15,6 +15,7 @@ Feature:
         When I navigate to the search page
         And I select the profile "westminster_yellow"
         Then I should see "westminster_yellow"
+        And I should see "Circle"
         And I should see "London"
         And I should see "England"
         And I should see "30"
