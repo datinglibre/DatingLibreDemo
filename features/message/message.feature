@@ -8,6 +8,7 @@ Feature:
             | email                 | attributes     | requirements   | city    | age |
             | bristol_1@example.com | blue, square   | yellow, circle | Bristol | 30  |
             | bath_1@example.com    | yellow, circle | blue, square   | Bath    | 30  |
+        And the user "bristol_1@example.com" has a subscription
         When the user "bristol_1@example.com" sends the message "Hello" to "bath_1@example.com"
         Then  "bath_1@example.com" should have a new message with "Hello" from "bristol_1@example.com"
 
@@ -20,6 +21,7 @@ Feature:
         And the following blocks exist
             | email                 | block              |
             | bristol_1@example.com | bath_1@example.com |
+        And the user "bath_1@example.com" has a subscription
         When the user "bath_1@example.com" sends the message "Hello" to "bristol_1@example.com"
         Then  "bristol_1@example.com" should have no messages
 
@@ -29,6 +31,7 @@ Feature:
             | email                 | attributes     | requirements   | city    | age |
             | bristol_1@example.com | blue, square   | yellow, circle | Bristol | 30  |
             | bath_1@example.com    | yellow, circle | blue, square   | Bath    | 30  |
+        And the user "bristol_1@example.com" has a subscription
         When the user "bristol_1@example.com" sends the message "Hello" to "bath_1@example.com"
         And I am logged in with "bristol_1@example.com"
         And I navigate to the matches page
@@ -40,6 +43,7 @@ Feature:
             | email                 | attributes     | requirements   | city    | age |
             | bristol_1@example.com | blue, square   | yellow, circle | Bristol | 30  |
             | bath_1@example.com    | yellow, circle | blue, square   | Bath    | 30  |
+        And the user "bristol_1@example.com" has a subscription
         And the user "bristol_1@example.com" sends the message "Hello" to "bath_1@example.com"
         And the user "bath_1@example.com" has uploaded a profile image
         And the profile image for "bath_1@example.com" has passed moderation
@@ -55,6 +59,7 @@ Feature:
             | email                 | attributes     | requirements   | city    | age |
             | bristol_1@example.com | blue, square   | yellow, circle | Bristol | 30  |
             | bath_1@example.com    | yellow, circle | blue, square   | Bath    | 30  |
+        And the user "bristol_1@example.com" has a subscription
         And the user "bristol_1@example.com" sends the message "Hello" to "bath_1@example.com"
         And the user "bath_1@example.com" has uploaded a profile image
         And I am logged in with "bristol_1@example.com"
@@ -69,6 +74,7 @@ Feature:
             | email                 | attributes     | requirements   | city    | age |
             | bristol_1@example.com | blue, square   | yellow, circle | Bristol | 30  |
             | bath_1@example.com    | yellow, circle | blue, square   | Bath    | 30  |
+        And the user "bristol_1@example.com" has a subscription
         When the user "bristol_1@example.com" sends the message "Hello" to "bath_1@example.com"
         And I am logged in with "bath_1@example.com"
         And I navigate to the matches page
@@ -81,6 +87,7 @@ Feature:
             | email                 | attributes     | requirements   | city    | age |
             | bristol_1@example.com | blue, square   | yellow, circle | Bristol | 30  |
             | bath_1@example.com    | yellow, circle | blue, square   | Bath    | 30  |
+        And the user "bristol_1@example.com" has a subscription
         And I am logged in with "bristol_1@example.com"
         And I navigate to message user "bath_1@example.com"
         And I send the message "Hello this is a new message"
@@ -94,6 +101,7 @@ Feature:
             | email                 | attributes     | requirements   | city    | age |
             | bristol_1@example.com | blue, square   | yellow, circle | Bristol | 30  |
             | bath_1@example.com    | yellow, circle | blue, square   | Bath    | 30  |
+        And the user "bristol_1@example.com" has a subscription
         And I am logged in with "bristol_1@example.com"
         And I navigate to message user "bath_1@example.com"
         And I send the message "Hello this is a new message"
@@ -109,6 +117,9 @@ Feature:
             | bristol_1@example.com | blue, square   | yellow, circle | Bristol | 30  |
             | bath_1@example.com    | yellow, circle | blue, square   | Bath    | 30  |
             | london_1@example.com  | yellow, circle | blue, square   | London  | 30  |
+        And the user "bristol_1@example.com" has a subscription
+        And the user "bath_1@example.com" has a subscription
+        And the user "london_1@example.com" has a subscription
         And I am logged in with "bristol_1@example.com"
         And I navigate to message user "bath_1@example.com"
         And I send the message "a truth universally acknowledged"

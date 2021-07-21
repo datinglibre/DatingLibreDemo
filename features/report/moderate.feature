@@ -35,6 +35,7 @@ Feature:
             | chelsea_blue@example.com       | blue, square   | yellow, circle | London | 30  |
             | westminster_yellow@example.com | yellow, circle | blue, square   | London | 30  |
         And a moderator exists with email "moderator@example.com"
+        And the user "westminster_yellow@example.com" has a subscription
         And the user "westminster_yellow@example.com" sends the message "Lorem ipsum" to "chelsea_blue@example.com"
         And the user "chelsea_blue@example.com" sends the message "Dolor sit amet" to "westminster_yellow@example.com"
         And the user "chelsea_blue@example.com" has reported "westminster_yellow@example.com"

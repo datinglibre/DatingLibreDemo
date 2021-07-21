@@ -7,6 +7,7 @@ Feature:
             | email                 | city   | age |
             | user@example.com      | London | 30  |
             | suspended@example.com | London | 30  |
+        And the user "user@example.com" has a subscription
         And the user "user@example.com" sends the message "Hello" to "suspended@example.com"
         And a moderator exists with email "moderator@example.com"
         And the moderator "moderator@example.com" has suspended "suspended@example.com" for "spam" for "72" hours
@@ -21,6 +22,7 @@ Feature:
             | email                 | city   | age |
             | user@example.com      | London | 30  |
             | suspended@example.com | London | 30  |
+        And the user "user@example.com" has a subscription
         And the user "user@example.com" sends the message "Hello" to "suspended@example.com"
         And an administrator exists with email "admin@example.com"
         And the administrator "admin@example.com" has permanently suspended "suspended@example.com"
@@ -35,6 +37,7 @@ Feature:
             | email                 | city   | age |
             | user@example.com      | London | 30  |
             | suspended@example.com | London | 30  |
+        And the user "user@example.com" has a subscription
         And the user "user@example.com" sends the message "Hello" to "suspended@example.com"
         And a moderator exists with email "moderator@example.com"
         And the moderator "moderator@example.com" has suspended "suspended@example.com" for "spam" for "72" hours
