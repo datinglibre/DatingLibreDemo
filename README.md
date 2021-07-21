@@ -21,9 +21,9 @@ All PRs should be opened against this reference repository and/or the [datinglib
 
 ## Documentation
 
-See the [Wiki](https://github.com/datinglibre/DatingLibre/wiki/).
+[User guide](https://github.com/datinglibre/DatingLibre/wiki#user-guide).
 
-Start with the [Development](https://github.com/datinglibre/DatingLibre/wiki/Development) section to set up the project on a local machine.
+[Developer guide](https://github.com/datinglibre/DatingLibre/wiki#developer-guide). Start with the [Development](https://github.com/datinglibre/DatingLibre/wiki/Development) section to set up the project on a local machine.
 
 ## Features
 
